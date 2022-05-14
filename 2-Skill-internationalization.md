@@ -76,7 +76,9 @@ const languageStrings = {
 >   ### The interceptor takes in a process() method --> meaning as the interceptor is run we have a handler input that we can manage however we want, and we also have to register it
 
 
+<hr />
 
+>   ##  This request interceptor will bind a translation function 't' to the handlerInput:
 
 ```
 
@@ -93,6 +95,19 @@ const LocalisationRequestInterceptor = {
     }
 };
 
+
+exports.handler = Alexa.SkillBuilders.custom()
+    .addRequestHandlers(
+        LaunchRequestHandler,
+        HelloWorldIntentHandler,
+        HelpIntentHandler,
+        CancelAndStopHandler,
+        ...
+    )
+    .addRequestInterceptors(LocalisationRequestInterceptor)
+    .addErrorHandlers(
+        ErrorHandler,
+    )
 
 
 
